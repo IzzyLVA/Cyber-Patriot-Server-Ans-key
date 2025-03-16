@@ -1,0 +1,77 @@
+# CyberPatriot Windows Server 2019 Training Image Answer Key
+
+This guide provides solutions for addressing common vulnerabilities on a Windows Server 2019 system. Each issue is listed with instructions to locate, resolve, and understand its significance from a cybersecurity perspective.
+
+---
+
+## **Answers**
+
+### 1. Forensics Question 1 (12 pts)
+- **Locate**: Open `fsmgmt.msc` and navigate to **Shared Folders > Shares**.
+- **Solve**: Find and note the **absolute path** of an unauthorized shared folder.
+- **Why**: Shared folders could expose sensitive data. Limiting access minimizes risks.
+
+### 2. Forensics Question 2 (12 pts)
+- **Locate**: Use PowerShell to find the SHA256 hash of `jarlsberg.png` on the Desktop.
+- **Solve**: Run `Get-FileHash -Algorithm SHA256 .\jarlsberg.png` and save the hash.
+- **Why**: Hash functions ensure file integrity and protect against tampering.
+
+### 3-4. Remove Unauthorized Users: ancano, tolfdir (5 pts each)
+- **Locate**: Open `lusrmgr.msc` and cross-check user accounts with the README.
+- **Solve**: Delete accounts not listed in the README.
+- **Why**: Unauthorized accounts expand attack surfaces; removing them enhances security.
+
+### 5. Remove Lydia as Admin (6 pts)
+- **Locate**: In **Groups > Administrators** under `lusrmgr.msc`.
+- **Solve**: Remove Lydia from the Admins group.
+- **Why**: Admin privileges should be restricted to protect system integrity.
+
+### 6. Ensure Balgruuf Has a Password (6 pts)
+- **Locate**: Under **Control Panel > User Accounts**, look for blank passwords.
+- **Solve**: Create a strong password for Balgruuf.
+- **Why**: Strong passwords prevent unauthorized access.
+
+### 7-8. Enforce Secure Policies: Password Age & Lockout Threshold (6 pts each)
+- **Locate**: Open `secpol.msc` and review account policies.
+- **Solve**: Set maximum password age (90 days) and lockout threshold (10 attempts).
+- **Why**: Regular updates and lockout policies reduce risks of compromise.
+
+### 9. Limit Blank Password Use (6 pts)
+- **Locate**: Enable **Limit local use of blank passwords to console only** in `secpol.msc`.
+- **Why**: Disabling blank passwords for remote login protects your network.
+
+### 10. Enable Firewall Protection (5 pts)
+- **Locate**: Use **Control Panel > Windows Defender Firewall**.
+- **Solve**: Turn on firewall protection for both Public and Private networks.
+- **Why**: Firewalls block unauthorized traffic.
+
+### 11. Automatic Updates Enabled (4 pts)
+- **Locate**: Check update settings in `gpedit.msc` under **Windows Update**.
+- **Solve**: Enable automatic updates.
+- **Why**: Patches vulnerabilities and ensures the latest security features.
+
+### 12. Disable Unauthorized File Share (6 pts)
+- **Locate**: Under `fsmgmt.msc`, stop unauthorized shares.
+- **Why**: Unauthorized shares expose sensitive data.
+
+### 13-14. Enable Event Log, Disable FTP (4-6 pts each)
+- **Locate**: Manage services via `services.msc`.
+- **Solve**: Enable the Event Log service and disable unnecessary ones like FTP.
+- **Why**: Proper service management reduces risks and tracks threats.
+
+### 15. Update Firefox (6 pts)
+- **Locate**: Open Firefox, navigate to **Help > About Firefox**.
+- **Solve**: Install available updates.
+- **Why**: Updated software patches known vulnerabilities.
+
+### 16-18. Remove Unauthorized Software: BitTorrent, Wireshark, Web Companion (6 pts each)
+- **Locate**: Check installed programs in **Control Panel > Programs and Features**.
+- **Solve**: Uninstall unauthorized software.
+- **Why**: Minimizes risks from malicious or unwanted programs.
+
+---
+
+## **Penalties**
+1. **Lockout Policy < 5 Attempts**: Susceptible to denial-of-service attacks (-4 pts).
+2. **Disabled Remote Desktop**: Key service disabled as per README (-5 pts).
+3. **Incorrect Firefox Installation Path**: Non-standard configuration (-5 pts).
